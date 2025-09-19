@@ -24,6 +24,7 @@
             }
 
             Console.WriteLine("Välkommen");
+            VisaMeny();
         }
 
         public static bool LoggaIN(Custumer custumer1, int antalFörsök)
@@ -51,13 +52,30 @@
                 }
             }
             return false;
-            
-          
+        }
 
-           
-  
-            
-            return false;
+        static void VisaMeny()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("*---------------------*");
+            Console.WriteLine("*    BANKOMAT         *");
+            Console.WriteLine("*    VÄLKOMMEN        *");
+            Console.WriteLine("*---------------------*");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("1. Sätt in pengar");
+            Console.WriteLine("2. Ta ut pengar");
+            Console.WriteLine("3. Visa saldo");
+            Console.WriteLine("4. Avsluta");
+
+
+
+
+
+
+
+
+
         }
 
     }
