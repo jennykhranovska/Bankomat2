@@ -1,60 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Bankomat
+﻿namespace Bankomat
 {
     internal class BankKonto
-
-
     {
-        private decimal saldo;
+        private decimal saldo;  // Bara ett fält för saldo
 
-        public decimal Balanc
-        { get; set; }
+        // Publik egenskap som bara läser saldo
+        public decimal Balance
+        {
+            get { return saldo; }
+        }
 
-
+        // Metod för att sätta in pengar
         public void Deposit(decimal amount)
         {
-            if (amount >= 0)
+            if (amount > 0)
             {
                 saldo += amount;
             }
             else
             {
-
+                Console.WriteLine("Beloppet måste vara positivt.");
             }
-
         }
-        //Metoden ska vara public, ta emot ett decimal amount.  Kontrollera Är amount positivt?
-        //Finns tillräckligt saldo. Om allt är okej: minska saldot. Du kan välja att: Visa meddelande eller
-        //Returnera true/false om uttaget lyckades.
 
-
+        // Metod för att ta ut pengar
         public bool Withdraw(decimal amount)
         {
-            if (amount >= 0)
+            if (amount <= 0)
             {
-                if (amount <= saldo)
-                {
-                    saldo -= amount;
-                    return true;
-                }
-                else
-                {
-                    return false; // För lite pengar
-                }
+                Console.WriteLine("Beloppet måste vara positivt.");
+                return false;
             }
-            else
+            if (amount > saldo)
             {
-                return false; // Beloppet är negativt
+                Console.WriteLine("Otillräckligt saldo.");
+                return false;
             }
-        }
 
+            saldo -= amount;
+            return true;
+        }
     }
 }
-
-
-

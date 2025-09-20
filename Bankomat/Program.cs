@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.Design;
+﻿using System;
+using System.ComponentModel.Design;
 
 namespace Bankomat
 {
@@ -33,9 +34,11 @@ namespace Bankomat
             while (menyVal != 4)
              
             {
+              Console.Clear();
               VisaMeny();
               menyVal = int.Parse(Console.ReadLine());
-                
+              
+
                 switch (menyVal)
 
                 {
@@ -44,41 +47,53 @@ namespace Bankomat
                         decimal insättning = decimal.Parse(Console.ReadLine());
                         saldo += insättning;
                         Console.WriteLine($"Du satte in {insättning} kr. Nytt saldo är {saldo}kr.");
+                        Console.WriteLine("Tryck på valfri knapp för att fortsätta...");
+
+                        Console.ReadKey();
+
                         break;
 
 
-                  case 2:
-                  Console.WriteLine("Ta ut penger");
+                    case 2:
+                        Console.WriteLine("Ta ut pengar");
                         decimal uttag = decimal.Parse(Console.ReadLine());
-                        if (uttag <= saldo)
+
+                        if (uttag > 0 && uttag <= saldo)
                         {
                             saldo -= uttag;
-
                             Console.WriteLine($"Du tog ut {uttag} kr. Nytt saldo är {saldo} kr");
                         }
                         else
                         {
-                            Console.WriteLine("Ogiltig saldo");
+                            Console.WriteLine("Uttaget är ogiltigt – kontrollera beloppet.");
                         }
-                            break;
 
-                   case 3:
-                   Console.WriteLine($"Ditt saldo är {saldo} kr");
-                        
+                        Console.WriteLine("Tryck på valfri knapp för att fortsätta...");
+                        Console.ReadKey();
                         break;
-
-
-                   case 4:
-                   Console.WriteLine("Avslutar");
-                   break;
-
-                   default:
-                   Console.WriteLine("Ogiltig val");
-                   break;
+                    
+                    case 3:
+                        Console.WriteLine($"Ditt saldo är {saldo} kr");
+                        Console.WriteLine("Tryck på valfri knapp för att fortsätta...");
+                        Console.ReadKey();
+                        break;
+                    
+                    case 4:
+                        Console.WriteLine("Avslutar");
+                        Console.WriteLine("Tryck på valfri knapp för att fortsätta...");
+                        Console.ReadKey();
+                        break;
+                    
+                    default:
+                        Console.WriteLine("Ogiltig val");
+                        Console.WriteLine("Tryck på valfri knapp för att fortsätta...");
+                        Console.ReadKey();
+                        break;
                 }
 
                  {
                    Console.WriteLine();
+                   
 
                  }
 
